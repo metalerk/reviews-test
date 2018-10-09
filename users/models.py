@@ -15,4 +15,3 @@ class Reviewer(AbstractUser):
 	class Meta:
 		db_table = 'users'
 		verbose_name_plural = 'Users'
-		ordering = ['-created']

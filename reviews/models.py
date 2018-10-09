@@ -8,9 +8,9 @@ from uuid import uuid4
 
 class Review(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-	company = models.ForeignKey(Reviewer, on_delete=models.CASCADE)
-	reviewer = models.ForeignKey(User, on_delete=models.CASCADE)
-	rating = models.IntegerFiedl(
+	company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='company1')
+	reviewer = models.ForeignKey(Reviewer, on_delete=models.CASCADE, related_name='reviewer1')
+	rating = models.IntegerField(
 		default=1,
 		validators=[MaxValueValidator(5), MinValueValidator(1)]
 	)
