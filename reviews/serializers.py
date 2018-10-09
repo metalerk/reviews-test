@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Review
 from users.models import Reviewer
-from companies.models import Company
+from companies.serializers import CompanySerializer
 
 
 class ReviewerSerializer(serializers.ModelSerializer):
@@ -18,19 +18,9 @@ class ReviewerSerializer(serializers.ModelSerializer):
         )
 
 
-class CompanySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Company
-        fields = (
-            'id',
-            'name',
-        )
-
-
 class ReviewSerializer(serializers.ModelSerializer):
     reviewer = ReviewerSerializer()
-    company = Company()
+    company = CompanySerializer()
 
     class Meta:
         model = Review
