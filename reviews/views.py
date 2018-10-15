@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -14,10 +15,12 @@ class GetReviewsView(ProtectedAPIView):
 	Get Reviews
 	"""
 	
-	def get(self, request, *args, **kwargs):
+	def get(self, request, page=1, *args, **kwargs):
 		
 		reviews = Review.objects.filter(reviewer=request.user)
-		response = ReviewSerializer(reviews, many=True)
+		paginator = Paginator(reviews, 10)
+		queryset_response = paginator.get_page(page)
+		response = ReviewSerializer(queryset_response, many=True)
 		return Response(response.data)
 
 
@@ -47,3 +50,15 @@ class PosttReviewsView(ProtectedAPIView):
 		except Exception as e:
 			return Response({'error': e.__str__()},
 				status=status.HTTP_400_BAD_REQUEST)
+
+
+class RetrieveReviewsView(ProtectedAPIView):
+	"""
+	Retrieve a specific post
+	"""
+
+	def get(self, request, id=None):
+
+		reviews = get_or_none(Review, id=id)
+		response = ReviewSerializer(reviews, many=True)
+		return Response(response.data)

@@ -7,6 +7,8 @@ from uuid import uuid4
 
 
 class Review(models.Model):
+	""" Review entity. """
+
 	id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
 	company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='company1')
 	reviewer = models.ForeignKey(Reviewer, on_delete=models.CASCADE, related_name='reviewer1')

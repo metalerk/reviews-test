@@ -5,6 +5,7 @@ from companies.serializers import CompanySerializer
 
 
 class ReviewerSerializer(serializers.ModelSerializer):
+    """ Serializer for model Reviewer """
 
     class Meta:
         model = Reviewer
@@ -19,6 +20,8 @@ class ReviewerSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    """ Serializer for model Review """
+
     reviewer = ReviewerSerializer()
     company = CompanySerializer()
 

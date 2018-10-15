@@ -5,6 +5,8 @@ from uuid import uuid4
 
 
 class Reviewer(AbstractUser):
+	""" Reviewer user """
+
 	id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
 
 
