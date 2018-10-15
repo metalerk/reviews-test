@@ -58,11 +58,11 @@ Parameters:
 - summary => review summary (string)
 - is_employee => is current employee (bool)
 
-You can create it in `/api/review/post_review/`
+You can create it in `/api/review/create/`
 
 ```bash
 (env)$ curl -X POST \
-  http://localhost:8000/api/review/post_review/ \
+  http://localhost:8000/api/review/create/ \
   -H 'Authorization: JWT <token>' \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' \
@@ -77,22 +77,22 @@ You can create it in `/api/review/post_review/`
 
 ## Get reviews
 
-You can retrieve them in `/api/review/get_reviews/`
+You can retrieve them in `/api/review/list/`
 
 ```bash
 (env)$ curl -X GET \
-  http://localhost:8000/api/review/get_reviews/ \
+  http://localhost:8000/api/review/list/ \
   -H 'Authorization: JWT <token>' \
   -H 'Cache-Control: no-cache'
 ```
 
 ## Get companies
 
-You can retrieve them in `/api/company/get_companies/`
+You can retrieve them in `/api/company/list/`
 
 ```bash
 (env)$ curl -X GET \
-  http://localhost:8000/api/company/get_companies/ \
+  http://localhost:8000/api/company/list/ \
   -H 'Authorization: JWT <token>' \
   -H 'Cache-Control: no-cache'
 ```
